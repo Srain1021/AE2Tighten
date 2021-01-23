@@ -1,0 +1,10 @@
+
+
+.vs/
+bin/
+obj/
+*.suo
+packages/
+assets/
+AE2Tightening.Devices/
+AE2Tightening.EFDAL/
