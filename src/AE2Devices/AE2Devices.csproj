@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{03AA8509-FFF6-4AF0-8D63-EE98EA191B72}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AE2Devices</RootNamespace>
+    <AssemblyName>AE2Devices</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Advantech.Adam">
+      <HintPath>..\Libs\Advantech.Adam.DLL</HintPath>
+    </Reference>
+    <Reference Include="Advantech.Common">
+      <HintPath>..\Libs\Advantech.Common.DLL</HintPath>
+    </Reference>
+    <Reference Include="Advantech.Protocol">
+      <HintPath>..\Libs\Advantech.Protocol.DLL</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.Balluff.Commands, Version=2018.4.1.1129, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.Balluff.Commands.2018.4.1.1129\lib\net45\GodSharp.Balluff.Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.Balluff.Commands.SocketHost, Version=2020.2.20525.170, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.Balluff.Commands.SocketHost.2020.2.20525.170\lib\net45\GodSharp.Balluff.Commands.SocketHost.dll</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.Communication.Messages, Version=2019.4.21111.200, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.Communication.Messages.2019.4.21111.200\lib\net45\GodSharp.Communication.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.DependencyInjection, Version=2020.1.2.2611, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.DependencyInjection.2020.1.2.2611\lib\net45\GodSharp.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.OpcDa, Version=2020.1.2.2712, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.OpcDa.2020.1.2.2712\lib\net46\GodSharp.OpcDa.dll</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.SerialPort, Version=1.2.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.SerialPort.1.2.0.6\lib\net45\GodSharp.SerialPort.dll</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.Socket, Version=2020.2.2520.2130, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.Socket.2020.2.2520.2130\lib\net45\GodSharp.Socket.dll</HintPath>
+    </Reference>
+    <Reference Include="MwCard, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MwCard.1.0.0\lib\net35\MwCard.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.9.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ToolsAPI">
+      <HintPath>..\Libs\ToolsAPI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADAM\AdamClient.cs" />
+    <Compile Include="ADAM\AdamController.cs" />
+    <Compile Include="ADAM\EnumSensor.cs" />
+    <Compile Include="ADAM\IAdamController.cs" />
+    <Compile Include="AE2DeviceFactory.cs" />
+    <Compile Include="Enum\SystemShieldEnum.cs" />
+    <Compile Include="IDevice.cs" />
+    <Compile Include="Interface\IAutoSwitch.cs" />
+    <Compile Include="MwCard\CardInfo.cs" />
+    <Compile Include="MwCard\ICardController.cs" />
+    <Compile Include="MwCard\MwCardController.cs" />
+    <Compile Include="PLC\IOpcController.cs" />
+    <Compile Include="PLC\OpcController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RFID\IRFIDController.cs" />
+    <Compile Include="RFID\RFIDController.cs" />
+    <Compile Include="RFID\TagData.cs" />
+    <Compile Include="SCAN\IScanController.cs" />
+    <Compile Include="SCAN\ScanController.cs" />
+    <Compile Include="SCAN\SerialScanController.cs" />
+    <Compile Include="Tighten\ITightenController.cs" />
+    <Compile Include="Tighten\TightenController.cs" />
+    <Compile Include="Tighten\TightenData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mwrf32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AE2Tightening.Configure\AE2Tightening.Configura.csproj">
+      <Project>{ab2916d3-93b5-4f60-8946-b018b0e5b5a2}</Project>
+      <Name>AE2Tightening.Configura</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

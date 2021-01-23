@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GodSharp.Logging.NLog</name>
+    </assembly>
+    <members>
+        <member name="T:GodSharp.Logging.NLogging">
+            <summary>
+            Nlog for <see cref="T:GodSharp.Logging.Abstractions.Logging" />.
+            </summary>
+            <seealso cref="T:GodSharp.Logging.Abstractions.Logging" />
+        </member>
+        <member name="M:GodSharp.Logging.NLogging.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:GodSharp.Logging.NLogging"/> class.
+            </summary>
+        </member>
+        <member name="M:GodSharp.Logging.NLogging.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GodSharp.Logging.NLogging"/> class.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:GodSharp.Logging.NLogging.WriteInvoke(System.String,GodSharp.Logging.Abstractions.LoggingLevel,System.Exception)">
+            <summary>
+            Writes the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="type">The type.</param>
+            <param name="exception">The exception.</param>
+        </member>
+    </members>
+</doc>

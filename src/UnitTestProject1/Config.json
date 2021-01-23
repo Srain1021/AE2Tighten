@@ -1,0 +1,99 @@
+{
+  "Rfid": {
+    "DeviceId": "8A9A13C6-2379-46DB-85DF-664E3B8AD433",
+    "ProtocolType": "CRT",
+    "OutputType": "Content",
+    "OutputOptions": {
+      "ReadLength": 22,
+      "BccEnabled": false,
+      "Terminator1Enabled": true,
+      "Terminator1": 13,
+      "Terminator2Enabled": true,
+      "Terminator2": 10
+    },
+    "Host": "192.168.8.231",
+    "RemotePort": 4001,
+    "Misc": "Rfid",
+    "Available": true
+  },
+  "Adam": {
+    "PortNumber": 1,
+    "Misc": "IO模块",
+    "Available": true
+  },
+  "MwCard": {
+    "Available": true,
+    "Port": 3,
+    "BaudRate": 115200
+  },
+  "Scanner": {
+    "PortName": "COM2",
+    "BuadRate": 9600,
+    "Parity": "none",
+    "DataBits": 8,
+    "StopBits": 1,
+    "Misc": "Scanner",
+    "Available": true
+  },
+  "Opc": {
+    "Available": true,
+    "ProgId": "Mitsubishi.MXOPC.7",
+    "Items": [
+      {
+        "Id": 1,
+        "ItemId": "TightenStation.Heartbeat",
+        "ItemType": 1,
+        "Misc": "Heartbeat",
+        "Available": true
+      },
+      {
+        "Id": 2,
+        "ItemId": "TightenStation.ReadShieldSystem", //
+        "ItemType": 1,
+        "Misc": "ReadShieldSystem",
+        "Available": true
+      },
+      {
+        "Id": 3,
+        "ItemId": "TightenStation.NoPass",
+        "ItemType": 1,
+        "Misc": "NoPass",
+        "Available": true
+      }
+    ]
+  },
+  "BarCodePattern": "^[A-Z][A-Z0-9]{7}[0-9]{4}",
+  "DisplanQueueNum": 4,
+  "NullCode": "000000000000",
+  "Screenlist": [
+    {
+      "Id": 0,
+      "Title": "压缩机安装",
+      "Station": {
+        "StationID": "C008",
+        "StationName": "压缩机安装",
+        "Misc": "CurStation",
+        "Available": true
+      },
+      "Tighten": [
+        {
+          "Available": true,
+          "CodeType": "EngineCode", //Vin,EngineCode,PartCode
+          "CodeRequest": true, //是否需要发送条码
+          "ToolId": 1,
+          "NickName": "压缩机安装",
+          "Host": "192.168.8.232",
+          "Port": 4545
+        }
+      ],
+      "Part": {
+        "Available": false,
+        "Bind": false,
+        "PartName": ""
+      }
+    }
+  ],
+  "IgnoreEngine": [
+
+  ]
+}

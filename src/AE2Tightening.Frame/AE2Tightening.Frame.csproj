@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6ACE6B14-8F72-4211-BB87-5182E9374824}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AE2Tightening.Frame</RootNamespace>
+    <AssemblyName>AE2Tightening.Frame</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Code\AE2RFID\wdhac.ae2.tightening\publich\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CF161A390BAA877D239F32D522DCE390736AB4CA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AE2Tightening.Frame_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AE2图标.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GodSharp.Communication.Messages, Version=2019.4.21111.200, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.Communication.Messages.2019.4.21111.200\lib\net45\GodSharp.Communication.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.DependencyInjection, Version=2020.1.2.2611, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.DependencyInjection.2020.1.2.2611\lib\net45\GodSharp.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="GodSharp.Socket, Version=2020.2.2520.2130, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.Socket.2020.2.2520.2130\lib\net45\GodSharp.Socket.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.9.0\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.4.1.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\DeviceController\MyTightenController.cs" />
+    <Compile Include="Controller\DeviceController\TightenDataCaChe.cs" />
+    <Compile Include="Controller\ITightenManager.cs" />
+    <Compile Include="Data\Mapper\TightenMapper.cs" />
+    <Compile Include="Data\RepositoryCache.cs" />
+    <Compile Include="Data\RFIDDBHelper.cs" />
+    <Compile Include="Data\LocalSQLService.cs" />
+    <Compile Include="Data\MSSQLService.cs" />
+    <Compile Include="UserCtrl\CardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrl\CardControl.designer.cs">
+      <DependentUpon>CardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrl\MonitorItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserCtrl\MonitorItem.designer.cs">
+      <DependentUpon>MonitorItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrl\ToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="ViewModel\AuthorType.cs" />
+    <Compile Include="ViewModel\EngineViewModel.cs" />
+    <Compile Include="View\AppController.cs" />
+    <Compile Include="View\FormAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormAuthor.designer.cs">
+      <DependentUpon>FormAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormDataSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDataSearch.Designer.cs">
+      <DependentUpon>FormDataSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserCtrl\UserLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\MainViewModels.cs" />
+    <EmbeddedResource Include="UserCtrl\CardControl.resx">
+      <DependentUpon>CardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserCtrl\MonitorItem.resx">
+      <DependentUpon>MonitorItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormAuthor.resx">
+      <DependentUpon>FormAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormDataSearch.resx">
+      <DependentUpon>FormDataSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AE2Devices\AE2Devices.csproj">
+      <Project>{03aa8509-fff6-4af0-8d63-ee98ea191b72}</Project>
+      <Name>AE2Devices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AE2Tightening.Configure\AE2Tightening.Configura.csproj">
+      <Project>{ab2916d3-93b5-4f60-8946-b018b0e5b5a2}</Project>
+      <Name>AE2Tightening.Configura</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AE2Tightening.Core\AE2Tightening.Core.csproj">
+      <Project>{8a40c728-df1e-4e2e-b0b8-981d2315da15}</Project>
+      <Name>AE2Tightening.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AE2Tightening.Lite\AE2Tightening.Lite.csproj">
+      <Project>{efc80265-6d4e-4150-994f-7f4447c72904}</Project>
+      <Name>AE2Tightening.Lite</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AE2图标.ico" />
+    <None Include="Resources\toggle-on.png" />
+    <None Include="Resources\toggle-off.png" />
+    <None Include="Resources\icons8_toggle_on_96px.png" />
+    <None Include="Resources\icons8_toggle_off_96px.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions />
+</Project>

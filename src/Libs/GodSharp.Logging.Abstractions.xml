@@ -1,0 +1,409 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GodSharp.Logging.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:GodSharp.Logging.Abstractions.ILogging">
+            <summary>
+            The <see cref="T:GodSharp.Logging.Abstractions.ILogging"/> interface.
+            </summary>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.ILogging.Debug(System.String,System.Exception)">
+            <summary>
+            Debugs the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.ILogging.Info(System.String,System.Exception)">
+            <summary>
+            Informations the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.ILogging.Warn(System.String,System.Exception)">
+            <summary>
+            Warns the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.ILogging.Error(System.String,System.Exception)">
+            <summary>
+            Errors the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.ILogging.Fatal(System.String,System.Exception)">
+            <summary>
+            Fatals the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.ILogging.Write(System.String,GodSharp.Logging.Abstractions.LoggingLevel,System.Exception)">
+            <summary>
+            Writes the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="type">The type.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="T:GodSharp.Logging.Abstractions.Logging">
+            <summary>
+            Log abstract class.
+            </summary>
+            <seealso cref="T:GodSharp.Logging.Abstractions.ILogging" />
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.Logging.Debug(System.String,System.Exception)">
+            <summary>
+            Debugs the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.Logging.Error(System.String,System.Exception)">
+            <summary>
+            Errors the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.Logging.Fatal(System.String,System.Exception)">
+            <summary>
+            Fatals the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.Logging.Info(System.String,System.Exception)">
+            <summary>
+            Informations the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.Logging.Warn(System.String,System.Exception)">
+            <summary>
+            Warns the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.Logging.Write(System.String,GodSharp.Logging.Abstractions.LoggingLevel,System.Exception)">
+            <summary>
+            Writes the specified log.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="type">The type.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.Logging.Write(GodSharp.Logging.Abstractions.LoggingBody)">
+            <summary>
+            Writes the specified body.
+            </summary>
+            <param name="body">The body.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.Logging.WriteInvoke(System.String,GodSharp.Logging.Abstractions.LoggingLevel,System.Exception)">
+            <summary>
+            Writes the invoke.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="type">The type.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="T:GodSharp.Logging.Abstractions.LoggingConfiguration">
+            <summary>
+            Log configuration.
+            </summary>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingConfiguration.Available">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:GodSharp.Logging.Abstractions.ILogging"/> is available.
+            </summary>
+            <value>
+              <c>true</c> if available; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingConfiguration.QueueEnable">
+            <summary>
+            Gets or sets a value indicating whether [queue enable].
+            </summary>
+            <value>
+              <c>true</c> if [queue enable]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingConfiguration.OutputLevel">
+            <summary>
+            Gets or sets the output level.
+            </summary>
+            <value>
+            The output level.
+            </value>
+        </member>
+        <member name="T:GodSharp.Logging.Abstractions.LoggingLevel">
+            <summary>
+            Log level
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingLevel.Debug">
+            <summary>
+            The debug
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingLevel.Info">
+            <summary>
+            The information
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingLevel.Warn">
+            <summary>
+            The warn
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingLevel.Error">
+            <summary>
+            The error
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingLevel.Fatal">
+            <summary>
+            The fatal
+            </summary>
+        </member>
+        <member name="T:GodSharp.Logging.Abstractions.LoggingOutputLevel">
+            <summary>
+            The log ouput level.
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.None">
+            <summary>
+            The none
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.DebugOnly">
+            <summary>
+            The debug
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.InfoOnly">
+            <summary>
+            The information
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.WarnOnly">
+            <summary>
+            The warn
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.ErrorOnly">
+            <summary>
+            The error
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.FatalOnly">
+            <summary>
+            The fatal
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.Debug">
+            <summary>
+            The debug
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.Info">
+            <summary>
+            The information
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.Warn">
+            <summary>
+            The warn
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.Error">
+            <summary>
+            The error
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.Fatal">
+            <summary>
+            The fatal
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingOutputLevel.All">
+            <summary>
+            All
+            </summary>
+        </member>
+        <member name="T:GodSharp.Logging.Abstractions.LoggingBody">
+            <summary>
+            Logging body.
+            </summary>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingBody.Content">
+            <summary>
+            Gets or sets the content.
+            </summary>
+            <value>
+            The content.
+            </value>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingBody.Level">
+            <summary>
+            Gets or sets the level.
+            </summary>
+            <value>
+            The level.
+            </value>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingBody.Exception">
+            <summary>
+            Gets or sets the exception.
+            </summary>
+            <value>
+            The exception.
+            </value>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingBody.#ctor(System.String,GodSharp.Logging.Abstractions.LoggingLevel,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:GodSharp.Logging.Abstractions.LoggingBody"/> struct.
+            </summary>
+            <param name="content">The content.</param>
+            <param name="level">The level.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="T:GodSharp.Logging.Abstractions.LoggingQueueRunner">
+            <summary>
+            Logging queue runner
+            </summary>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunner.#cctor">
+            <summary>
+            Initializes the <see cref="T:GodSharp.Logging.Abstractions.LoggingQueueRunner"/> class.
+            </summary>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingQueueRunner.Running">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:GodSharp.Logging.Abstractions.LoggingQueueRunner"/> is running.
+            </summary>
+            <value>
+              <c>true</c> if running; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingQueueRunner.QueueCount">
+            <summary>
+            Gets the queue count.
+            </summary>
+            <value>
+            The queue count.
+            </value>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunner.SetExecutor(System.Action{GodSharp.Logging.Abstractions.LoggingBody})">
+            <summary>
+            Sets the executor.
+            </summary>
+            <param name="executor">The executor.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunner.Enqueue(GodSharp.Logging.Abstractions.LoggingBody)">
+            <summary>
+            Enqueues the specified body.
+            </summary>
+            <param name="body">The body.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunner.SetOnException(System.Action{System.Exception})">
+            <summary>
+            Sets the on exception.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunner.Start">
+            <summary>
+            Starts this instance.
+            </summary>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunner.Stop">
+            <summary>
+            Stops this instance.
+            </summary>
+        </member>
+        <member name="T:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal">
+            <summary>
+            Logging <see cref="T:System.Collections.Generic.Queue`1"/> runner internal object.
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.queue">
+            <summary>
+            The que
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.me">
+            <summary>
+            The mre
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.thread">
+            <summary>
+            The thread.
+            </summary>
+        </member>
+        <member name="F:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.stopping">
+            <summary>
+            The stopping flag.
+            </summary>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.Running">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:GodSharp.Logging.Abstractions.LoggingQueueRunner"/> is running.
+            </summary>
+            <value>
+              <c>true</c> if running; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.QueueCount">
+            <summary>
+            Gets the queue count.
+            </summary>
+            <value>
+            The queue count.
+            </value>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.Executor">
+            <summary>
+            Gets or sets the executor.
+            </summary>
+            <value>
+            The executor.
+            </value>
+        </member>
+        <member name="P:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.OnException">
+            <summary>
+            The on exception
+            </summary>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.Enqueue(GodSharp.Logging.Abstractions.LoggingBody)">
+            <summary>
+            Enqueues the specified body.
+            </summary>
+            <param name="body">The body.</param>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.Start">
+            <summary>
+            Starts this instance.
+            </summary>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.Stop">
+            <summary>
+            Stops this instance.
+            </summary>
+        </member>
+        <member name="M:GodSharp.Logging.Abstractions.LoggingQueueRunnerInternal.Loop">
+            <summary>
+            Loop write log
+            </summary>
+        </member>
+    </members>
+</doc>

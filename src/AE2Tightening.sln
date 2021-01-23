@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AE2Tightening.Frame", "AE2Tightening.Frame\AE2Tightening.Frame.csproj", "{6ACE6B14-8F72-4211-BB87-5182E9374824}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AE2Tightening.Core", "AE2Tightening.Core\AE2Tightening.Core.csproj", "{8A40C728-DF1E-4E2E-B0B8-981D2315DA15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AE2Tightening.Lite", "AE2Tightening.Lite\AE2Tightening.Lite.csproj", "{EFC80265-6D4E-4150-994F-7F4447C72904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{A0D95373-D8CC-4102-AE5A-DC136483A930}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AE2Tightening.Configura", "AE2Tightening.Configure\AE2Tightening.Configura.csproj", "{AB2916D3-93B5-4F60-8946-B018B0E5B5A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AE2Devices", "AE2Devices\AE2Devices.csproj", "{03AA8509-FFF6-4AF0-8D63-EE98EA191B72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ACE6B14-8F72-4211-BB87-5182E9374824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ACE6B14-8F72-4211-BB87-5182E9374824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ACE6B14-8F72-4211-BB87-5182E9374824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ACE6B14-8F72-4211-BB87-5182E9374824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A40C728-DF1E-4E2E-B0B8-981D2315DA15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A40C728-DF1E-4E2E-B0B8-981D2315DA15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A40C728-DF1E-4E2E-B0B8-981D2315DA15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A40C728-DF1E-4E2E-B0B8-981D2315DA15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFC80265-6D4E-4150-994F-7F4447C72904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFC80265-6D4E-4150-994F-7F4447C72904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFC80265-6D4E-4150-994F-7F4447C72904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFC80265-6D4E-4150-994F-7F4447C72904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0D95373-D8CC-4102-AE5A-DC136483A930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D95373-D8CC-4102-AE5A-DC136483A930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D95373-D8CC-4102-AE5A-DC136483A930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D95373-D8CC-4102-AE5A-DC136483A930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2916D3-93B5-4F60-8946-B018B0E5B5A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2916D3-93B5-4F60-8946-B018B0E5B5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2916D3-93B5-4F60-8946-B018B0E5B5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2916D3-93B5-4F60-8946-B018B0E5B5A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03AA8509-FFF6-4AF0-8D63-EE98EA191B72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03AA8509-FFF6-4AF0-8D63-EE98EA191B72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03AA8509-FFF6-4AF0-8D63-EE98EA191B72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03AA8509-FFF6-4AF0-8D63-EE98EA191B72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {813FE36F-68E7-409B-B30E-6D6DD6A38463}
+	EndGlobalSection
+EndGlobal
