@@ -82,8 +82,8 @@ namespace AE2Devices
                             diSignals = bDI.Take(4).ToArray();
                             continue;
                         }
-                        ReadToStationSwitch(bDI[2]);
-                        ReadOutStationSwitch(bDI[1]);
+                        //ReadToStationSwitch(bDI[2]);
+                        //ReadOutStationSwitch(bDI[1]);
                         ReadResetButton(bDI[0]);
                     }
                     Thread.Sleep(200);

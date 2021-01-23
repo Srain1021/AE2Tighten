@@ -137,7 +137,7 @@ namespace AE2Tightening.Frame.ViewModel
             get => opcNet;
             set => SetProperty(ref opcNet, value);
         }
-        public bool TightenNet
+        public bool Tighten1Net
         {
             get => tdNet;
             set => SetProperty(ref tdNet, value);
@@ -160,7 +160,7 @@ namespace AE2Tightening.Frame.ViewModel
         /// <summary>
         /// 点位停线状态
         /// </summary>
-        public bool StopLine {
+        public bool Pass {
             get => stopLine;
             set => SetProperty(ref stopLine, value);
         }

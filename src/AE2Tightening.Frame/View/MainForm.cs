@@ -215,18 +215,25 @@ namespace AE2Tightening.Frame
                 {
                     for (int i = 0; i < _screenConfig.Tighten.Length; i++)
                     {
-                        var tightenTool = new MyTightenManager(_screenConfig.Tighten[0],_screenConfig.Station)
+                        var tightenTool = new MyTightenManager(_screenConfig.Tighten[i],_screenConfig.Station)
                         {
                             NetChangedAction = (toolid,net) =>
                             {
-                                ViewModel.TightenNet = net;
-                                if (net)
+                                if(toolid == 1)
                                 {
-                                    ViewModel.PrintlnInfo($"拧紧机{toolid}已连接。");
+                                    ViewModel.Tighten1Net = net;
                                 }
                                 else
                                 {
-                                    ViewModel.PrintlnInfo($"拧紧机{toolid}断开连接");
+                                    ViewModel.TightenNet2 = net;
+                                }
+                                if (net)
+                                {
+                                    ViewModel.PrintlnInfo($"拧紧机{_screenConfig.Tighten[i].NickName}已连接。");
+                                }
+                                else
+                                {
+                                    ViewModel.PrintlnInfo($"拧紧机{_screenConfig.Tighten[i].NickName}断开连接");
                                 }
 
                             },
@@ -238,8 +245,18 @@ namespace AE2Tightening.Frame
                         {
                             ViewModel.PrintlnWarning("拧紧机通讯连接失败");
                         }
+                        switch (i)
+                        {
+                            case 0:
+                                Invoke(new Action(() => monitorTD1Net.Visible = true));
+                                break;
+                            case 1:
+                                Invoke(new Action(() => monitorTD2Net.Visible = true));
+                                break;
+                        }
                     }
                 }
+
                 #endregion
                 err = "Station数据获取异常";
                 Station = RFIDDBHelper.MSSQLHandler.StationService.Get(_screenConfig.Station.StationID);
@@ -264,9 +281,10 @@ namespace AE2Tightening.Frame
                 this.monitorShield.DataBindings.Add("Status", ViewModel, "ShieldStatus");
                 this.monitorRfidNet.DataBindings.Add("Status", ViewModel, "RFIDNet");
                 this.monitorAdamNet.DataBindings.Add("Status", ViewModel, "ADAMNet");
-                this.monitorTDNet.DataBindings.Add("Status", ViewModel, "TightenNet");
+                this.monitorTD1Net.DataBindings.Add("Status", ViewModel, nameof(ViewModel.Tighten1Net));
+                this.monitorTD2Net.DataBindings.Add("Status", ViewModel, nameof(ViewModel.TightenNet2));
                 this.monitorPLCNet.DataBindings.Add("Status", ViewModel, "PLCNet");
-                this.monitorStopLine.DataBindings.Add("Status", ViewModel, "StopLine");
+                this.monitorStopLine.DataBindings.Add("Status", ViewModel, nameof(ViewModel.Pass));
                 #endregion
                 #region 文本控件绑定
                 lblEngineCode.DataBindings.Add("Text", ViewModel, "EngineCode");
@@ -343,13 +361,10 @@ namespace AE2Tightening.Frame
         {
             switch (sensor)
             {
-                case EnumSensor.OutStation:
-                    Task.Run(() => EngineOutStation());
-                    break;
                 case EnumSensor.Reset:
                     if(_screenConfig.Id == 0)
                     {
-                        if (ViewModel.StopLine)
+                        if (!ViewModel.Pass)
                         {
                             Invoke(new Action(() =>
                             {
@@ -362,7 +377,8 @@ namespace AE2Tightening.Frame
                                 {
                                     if (card != null)
                                     {
-                                        opc.NoPass(false);
+                                        opc.Pass();
+                                        Task.Run(()=>EngineOutStation());
                                     }
                                 });
                                 frmAuthor.Show(this);
@@ -383,18 +399,12 @@ namespace AE2Tightening.Frame
         {
             try
             {
-                ViewModel.PrintlnInfo("到达限位");
-                Log.Information("到达限位");
                 if (EngineInfo == null || string.IsNullOrEmpty(EngineInfo.EngineCode) || EngineInfo.EngineCode == Configs.FileConfigs.NullCode)
                     return;
                 bool result = true;
-                string alarmInfo = EngineInfo.EngineCode;
                 if (GetTdResult() == false)
                 {
                     result = false;
-                    ViewModel.PrintlnWarning("拧紧作业没有完成");
-                    ViewModel.TightenResult = "NG";
-                    alarmInfo += "拧紧未完成报警；";
                     UpdateEngineResultToDB(EngineInfo.EngineCode, 0);
                 }
                 if (_screenConfig.Part.Bind)
@@ -407,15 +417,11 @@ namespace AE2Tightening.Frame
                     }
                     if (metasModel == null || metasModel.Result != 1)
                     {
-                        ViewModel.PrintlnWarning("减震器条码未绑定");
-                        alarmInfo += "减震器条码未绑定；";
                         result = false;
                     }
                 }
                 if (!result)
                 {
-                    Log.Warning($"{Station}:{alarmInfo}");
-                    LogAlarm("作业未完成", alarmInfo);
                     Task.Run(() => UpdateStationInfo(Station, 0));
                 }
                 else
@@ -425,7 +431,6 @@ namespace AE2Tightening.Frame
             }
             catch (Exception ex)
             {
-                ViewModel.PrintlnWarning("[EngineOutStation]：" + ex.Message);
                 Log.Error($"[{theTitle}]EngineOutStation", ex);
             }
 
@@ -536,7 +541,7 @@ namespace AE2Tightening.Frame
                     //空吊具与空条码有不同的提示
                     if (!string.IsNullOrEmpty(engineCode))/*engineCode == 000000000000;这种是吊具上没有发动机，无需作业*/
                     {
-                        ViewModel.PrintlnInfo("读取到空吊具标签");
+                        ViewModel.PrintlnInfo("读取到空托盘标签");
                     }
                     ViewModel.TightenResult = "";
                     ViewModel.TighteningData = null;
@@ -575,7 +580,6 @@ namespace AE2Tightening.Frame
             ViewModel.PrintlnInfo($"扫码:{engine.EngineCode} {engine.EngineName}");
 
             StartTighten(engine);//扫描的条码不分手自动
-
         }
 
 
@@ -655,7 +659,7 @@ namespace AE2Tightening.Frame
                         adam.AlarmWarning(true);
                         return;
                     }
-                    Log.Information("当前拧紧配置：{id}:{count}",curTightenCfg.Id,curTightenCfg.TightenPointNum);
+                    Log.Information("电枪{name}需拧紧螺栓个数：{count}", curTightenCfg.ToolId,curTightenCfg.TightenPointNum);
                 }
                 else
                 {
@@ -711,7 +715,7 @@ namespace AE2Tightening.Frame
                         return;
                 }
                 //如停线，自动放行
-                ViewModel.OnWorkCompate?.Invoke();
+                opc.Pass();
             }
             else
             {
@@ -774,6 +778,7 @@ namespace AE2Tightening.Frame
                 EngineCode = code,
                 StationId = Station?.StationID,
                 Result = 0,
+                brand = 0,
                 CreateTime = DateTime.Now,
             };
             await RFIDDBHelper.LocalSQLHandler.LTopEngineResult.InsertAsync(topEngineResultModel);
@@ -782,8 +787,8 @@ namespace AE2Tightening.Frame
                 metasModel = new MaterialMetasModel
                 {
                     EngineCode = code,
-                    StationCode = Station?.StationID
-                    //ResultId = result.Id
+                    StationCode = Station?.StationID,
+                    Result = 0
                 };
             }
         }
@@ -811,6 +816,7 @@ namespace AE2Tightening.Frame
                         StationId = Station?.StationID,
                         CreateTime = DateTime.Now,
                         Result = tdResult,
+                        brand = 0,
                         UpdateTime = DateTime.Now
                     };
                     await RFIDDBHelper.LocalSQLHandler.LTopEngineResult.InsertAsync(topEngineResultModel);

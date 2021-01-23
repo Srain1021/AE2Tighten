@@ -94,6 +94,7 @@
     <Compile Include="MwCard\MwCardController.cs" />
     <Compile Include="PLC\IOpcController.cs" />
     <Compile Include="PLC\OpcController.cs" />
+    <Compile Include="PLC\OPCSocketServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RFID\IRFIDController.cs" />
     <Compile Include="RFID\RFIDController.cs" />

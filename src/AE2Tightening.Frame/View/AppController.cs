@@ -119,9 +119,9 @@ namespace AE2Tightening.Frame
 
                 //OPC
                 opc = fac.CreateOpcDevice(appConfig.Opc);
-                opc.LineStopChangedAction = (s) =>
+                opc.PassChangedAction = (s) =>
                 {
-                    ShowToAllForms(v => v.StopLine = s);
+                    ShowToAllForms(v => v.Pass = s);
                 };
                 opc.NetChangedAction = (d, s) =>
                 {
@@ -134,8 +134,7 @@ namespace AE2Tightening.Frame
                 {
                     ShowToAllForms(m =>
                     {
-                        m.ShieldStatus = !s;
-                        m.PrintlnInfo(s ? "PLC屏蔽PC信号" : "PLC启动接收PC信号");
+                        m.ShieldStatus = s;
                     });
                 };
 
@@ -181,13 +180,7 @@ namespace AE2Tightening.Frame
                 {
                     
                 }
-                bool status = opc?.GetShieldValue() ?? false;
-                ViewModels.ForEach(m =>
-                {
-                    m.ShieldStatus = !status;
-                    m.PrintlnInfo(status ? "PLC屏蔽PC信号" : "PLC启动接收PC信号");
-                });
-
+                opc?.GetShieldValue();
             }
             catch (Exception ex)
             {
@@ -241,26 +234,28 @@ namespace AE2Tightening.Frame
         {
             try
             {
-                if (tag.EngineCode == lastCode && lastCode != appConfig.NullCode)
+                if (tag.EngineCode == lastCode && tag.EngineCode != appConfig.NullCode)
                 {
-                    if(currentTag == null)
-                    {
-                        adam.AlarmWarning(true);
-                        ViewModels.ForEach(m => m.PrintlnWarning("RFID条码重复"));
-                    }
+                    //if(currentTag == null)
+                    //{
+                    //    adam.AlarmWarning(true);
+                    //    ViewModels.ForEach(m => m.PrintlnWarning("RFID条码重复"));
+                    //}
                     return;
                 }
+                Log.Information("RFID读到条码：{code}",tag.EngineCode);
+                lastCode = tag.EngineCode;
                 adam.AlarmWarning(false);
                 currentTag = tag.Clone();
                 //将条码发送到拧紧岗位
                 OpenTightening(tag);
 
-                RFIDDBHelper.MSSQLHandler.RFIDPointInfo.Insert(new RFIDPointInfoModel
-                {
-                    EngineCode = tag.EngineCode,
-                    VNo = tag.SpreaderNo,
-                    DeviceId = appConfig.Rfid.DeviceId
-                });
+                //RFIDDBHelper.MSSQLHandler.RFIDPointInfo.Insert(new RFIDPointInfoModel
+                //{
+                //    EngineCode = tag.EngineCode,
+                //    VNo = tag.SpreaderNo,
+                //    DeviceId = appConfig.Rfid.DeviceId
+                //});
             }
             catch (Exception ex)
             {
@@ -358,6 +353,10 @@ namespace AE2Tightening.Frame
                 currentEngine = model;
                 lock (forms)
                     forms.ForEach(f => f.SetEngineCode(model?.Clone()));
+                if(tag.EngineCode == Configs.FileConfigs.NullCode)
+                {
+                    opc?.Pass();
+                }
             }
             catch (Exception ex)
             {
@@ -385,12 +384,12 @@ namespace AE2Tightening.Frame
                     }
                     
                    Log.Warning("拧紧不合格");
-                   AlarmAndStopLine(true);
+                   adam.AlarmWarning(true);
                 }
                 else if (forms.Any(f => f.GetPartResult() == false))
                 {
                     Log.Warning($"零件绑定不匹配，停线报警");
-                    AlarmAndStopLine(true);
+                    adam.AlarmWarning(true);
                 }
                
             }
@@ -448,40 +447,11 @@ namespace AE2Tightening.Frame
             //作业合格时，自动开线
             if (forms.All(f => f.GetTdResult() && f.GetPartResult()) )
             {
-                AlarmAndStopLine(false);
+                adam.AlarmWarning(false);
             }
         }
 
-        /// <summary>
-        /// 报警停线
-        /// </summary>
-        /// <param name="state"></param>
-        public void AlarmAndStopLine(bool state)
-        {
-            try
-            {
-                if (adam != null)
-                {
-                    adam.AlarmWarning(state);//报警
-                }
-                if (state)
-                {
-                    opc?.NoPass(true);//停线
-                    Log.Warning("AlarmAndStopLine停线");
-                }
-                else
-                {
-                    opc?.NoPass(false);//放行
-                    Log.Information("AlarmAndStopLine放行");
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error("调用alam报警异常。", ex);
-            }
-        }
-
-      
+     
 
         private void ShowToAllForms(Action<MainViewModels> action)
         {

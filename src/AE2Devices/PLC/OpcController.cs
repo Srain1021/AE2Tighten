@@ -20,7 +20,7 @@ namespace AE2Devices
         public bool NetStatus { get; set; }
         private bool LineStatus { get; set; }//线条状态
         private OpcConfig Config { get; }
-        public Action<bool> LineStopChangedAction { get; set; }
+        public Action<bool> PassChangedAction { get; set; }
 
         public Action<IDevice,bool> NetChangedAction { get; set; }
 
@@ -96,7 +96,7 @@ namespace AE2Devices
                             break;
                         case "NoPass"://这里可以做信号校验
                             LineStatus = Convert.ToBoolean(item.Value);
-                            LineStopChangedAction?.Invoke(LineStatus);
+                            PassChangedAction?.Invoke(LineStatus);
                             break;
                         default:
                             break;
@@ -188,14 +188,13 @@ namespace AE2Devices
         /// <summary>
         /// 停线
         /// </summary>
-        public bool NoPass(bool isStop)
+        public bool Pass()
         {
-            string p = "NoPass";
+            string p = "Pass";
             if (WriteBeforeCheck(p))
             {
-                int value = isStop ? 1 : 0;
-                bool result = opcClient.AsycnWriter(dicItems[p].ItemId, value);
-                Log.Information("写入{point}地址值{value}{result}", p, value, result ? "成功" : "失败");
+                bool result = opcClient.AsycnWriter(dicItems[p].ItemId, 1);
+                Log.Information("写入{point}地址值{value}{result}", p, 1, result ? "成功" : "失败");
                 return result;
             }
             else

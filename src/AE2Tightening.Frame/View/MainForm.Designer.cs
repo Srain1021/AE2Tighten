@@ -62,7 +62,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.monitorPLCNet = new AE2Tightening.Frame.MonitorItem();
             this.monitorScanNet = new AE2Tightening.Frame.MonitorItem();
-            this.monitorTDNet = new AE2Tightening.Frame.MonitorItem();
+            this.monitorTD2Net = new AE2Tightening.Frame.MonitorItem();
+            this.monitorTD1Net = new AE2Tightening.Frame.MonitorItem();
             this.monitorRfidNet = new AE2Tightening.Frame.MonitorItem();
             this.monitorAdamNet = new AE2Tightening.Frame.MonitorItem();
             this.listViewLog = new System.Windows.Forms.ListView();
@@ -414,7 +415,7 @@
             // monitorStopLine
             // 
             this.monitorStopLine.AutoSize = true;
-            this.monitorStopLine.FalseColor = System.Drawing.Color.Green;
+            this.monitorStopLine.FalseColor = System.Drawing.Color.Yellow;
             this.monitorStopLine.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.monitorStopLine.Location = new System.Drawing.Point(27, 33);
             this.monitorStopLine.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -424,13 +425,13 @@
             this.monitorStopLine.Status = false;
             this.monitorStopLine.TabIndex = 14;
             this.monitorStopLine.Text = "报警停线：";
-            this.monitorStopLine.TrueColor = System.Drawing.Color.Red;
+            this.monitorStopLine.TrueColor = System.Drawing.Color.Green;
             // 
             // monitorShield
             // 
             this.monitorShield.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.monitorShield.AutoSize = true;
-            this.monitorShield.FalseColor = System.Drawing.Color.Yellow;
+            this.monitorShield.FalseColor = System.Drawing.Color.Green;
             this.monitorShield.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.monitorShield.Location = new System.Drawing.Point(258, 33);
             this.monitorShield.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -440,7 +441,7 @@
             this.monitorShield.Status = false;
             this.monitorShield.TabIndex = 14;
             this.monitorShield.Text = "线体互锁：";
-            this.monitorShield.TrueColor = System.Drawing.Color.Green;
+            this.monitorShield.TrueColor = System.Drawing.Color.Yellow;
             // 
             // btSyncConfig
             // 
@@ -484,7 +485,8 @@
             // 
             this.groupBox1.Controls.Add(this.monitorPLCNet);
             this.groupBox1.Controls.Add(this.monitorScanNet);
-            this.groupBox1.Controls.Add(this.monitorTDNet);
+            this.groupBox1.Controls.Add(this.monitorTD2Net);
+            this.groupBox1.Controls.Add(this.monitorTD1Net);
             this.groupBox1.Controls.Add(this.monitorRfidNet);
             this.groupBox1.Controls.Add(this.monitorAdamNet);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -518,7 +520,7 @@
             this.monitorScanNet.AutoSize = true;
             this.monitorScanNet.FalseColor = System.Drawing.Color.DarkGray;
             this.monitorScanNet.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.monitorScanNet.Location = new System.Drawing.Point(468, 93);
+            this.monitorScanNet.Location = new System.Drawing.Point(258, 33);
             this.monitorScanNet.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.monitorScanNet.MinimumSize = new System.Drawing.Size(116, 33);
             this.monitorScanNet.Name = "monitorScanNet";
@@ -527,23 +529,40 @@
             this.monitorScanNet.TabIndex = 14;
             this.monitorScanNet.Text = "扫描枪：";
             this.monitorScanNet.TrueColor = System.Drawing.Color.Green;
-            this.monitorScanNet.Visible = false;
             // 
-            // monitorTDNet
+            // monitorTD2Net
             // 
-            this.monitorTDNet.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.monitorTDNet.AutoSize = true;
-            this.monitorTDNet.FalseColor = System.Drawing.Color.DarkGray;
-            this.monitorTDNet.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.monitorTDNet.Location = new System.Drawing.Point(39, 33);
-            this.monitorTDNet.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.monitorTDNet.MinimumSize = new System.Drawing.Size(116, 33);
-            this.monitorTDNet.Name = "monitorTDNet";
-            this.monitorTDNet.Size = new System.Drawing.Size(160, 40);
-            this.monitorTDNet.Status = false;
-            this.monitorTDNet.TabIndex = 14;
-            this.monitorTDNet.Text = "拧紧机：";
-            this.monitorTDNet.TrueColor = System.Drawing.Color.Green;
+            this.monitorTD2Net.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.monitorTD2Net.AutoSize = true;
+            this.monitorTD2Net.FalseColor = System.Drawing.Color.DarkGray;
+            this.monitorTD2Net.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.monitorTD2Net.Location = new System.Drawing.Point(468, 93);
+            this.monitorTD2Net.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.monitorTD2Net.MinimumSize = new System.Drawing.Size(116, 33);
+            this.monitorTD2Net.Name = "monitorTD2Net";
+            this.monitorTD2Net.Size = new System.Drawing.Size(160, 40);
+            this.monitorTD2Net.Status = false;
+            this.monitorTD2Net.TabIndex = 14;
+            this.monitorTD2Net.Text = "拧紧机：";
+            this.monitorTD2Net.TrueColor = System.Drawing.Color.Green;
+            this.monitorTD2Net.Visible = false;
+            // 
+            // monitorTD1Net
+            // 
+            this.monitorTD1Net.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.monitorTD1Net.AutoSize = true;
+            this.monitorTD1Net.FalseColor = System.Drawing.Color.DarkGray;
+            this.monitorTD1Net.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.monitorTD1Net.Location = new System.Drawing.Point(258, 93);
+            this.monitorTD1Net.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.monitorTD1Net.MinimumSize = new System.Drawing.Size(116, 33);
+            this.monitorTD1Net.Name = "monitorTD1Net";
+            this.monitorTD1Net.Size = new System.Drawing.Size(160, 40);
+            this.monitorTD1Net.Status = false;
+            this.monitorTD1Net.TabIndex = 14;
+            this.monitorTD1Net.Text = "拧紧机：";
+            this.monitorTD1Net.TrueColor = System.Drawing.Color.Green;
+            this.monitorTD1Net.Visible = false;
             // 
             // monitorRfidNet
             // 
@@ -551,7 +570,7 @@
             this.monitorRfidNet.AutoSize = true;
             this.monitorRfidNet.FalseColor = System.Drawing.Color.DarkGray;
             this.monitorRfidNet.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.monitorRfidNet.Location = new System.Drawing.Point(258, 33);
+            this.monitorRfidNet.Location = new System.Drawing.Point(39, 33);
             this.monitorRfidNet.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.monitorRfidNet.MinimumSize = new System.Drawing.Size(135, 33);
             this.monitorRfidNet.Name = "monitorRfidNet";
@@ -760,7 +779,7 @@
         private MonitorItem monitorShield;
         private MonitorItem monitorPLCNet;
         private MonitorItem monitorScanNet;
-        private MonitorItem monitorTDNet;
+        private MonitorItem monitorTD1Net;
         private MonitorItem monitorRfidNet;
         private MonitorItem monitorAdamNet;
         private System.Windows.Forms.Label label4;
@@ -774,6 +793,7 @@
         private System.Windows.Forms.Button btEnableTool;
         private System.Windows.Forms.Label lblCurTorque;
         private System.Windows.Forms.Label lblCurAngle;
+        private MonitorItem monitorTD2Net;
     }
 }
 

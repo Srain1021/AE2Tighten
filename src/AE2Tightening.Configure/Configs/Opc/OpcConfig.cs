@@ -4,7 +4,6 @@
     {
         public bool Available { get; set; }
         public string ProgId { get; set; }
-
         public OpcItem[] Items { get; set; }
 
     }

@@ -19,6 +19,8 @@ namespace AE2Tightening.Lite.Model
 
         public int Result { get; set; }
 
+        public int brand { get; set; }
+
         public DateTime? CreateTime { get; set; }
 
         public DateTime? UpdateTime { get; set; }

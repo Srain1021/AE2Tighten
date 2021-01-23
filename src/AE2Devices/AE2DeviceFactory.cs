@@ -39,7 +39,7 @@ namespace AE2Devices
         {
             if (config == null)
                 throw new ArgumentNullException("OpcConfig参数不能为null");
-            IOpcController opc = new OpcController(config);
+            IOpcController opc = new OPCSocketServer(config);
             return opc;
         }
 
